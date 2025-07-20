@@ -1,0 +1,12 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Deployment
+metadata:
+  name: java-app
+spec:
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      containers:
+        - name: java-container
+          image: myrepo/java-app:dev
