@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: java-app
+spec:
+  template:
+    spec:
+      containers:
+        - name: java-container
+          image: myrepo/java-app:prod
+  strategy:
+    canary:
+      steps:
+        - setWeight: 1
+        - pause: { duration: 5m }
+        - setWeight: 10
+        - pause: { duration: 5m }
+        - setWeight: 25
+        - pause: { duration: 5m }
+        - setWeight: 50
+        - pause: { duration: 5m }
+        - setWeight: 100
+        - pause: {}
