@@ -1,0 +1,23 @@
+# policies/kyverno/mutation-cpu-memory-limits.yaml
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: add-cpu-memory-limits
+spec:
+  rules:
+  - name: inject-cpu-memory-limits
+    match:
+      resources:
+        kinds:
+        - Pod
+    mutate:
+      patchStrategicMerge:
+        spec:
+          containers:
+          - resources:
+              limits:
+                cpu: "500m"
+                memory: "512Mi"
+              requests:
+                cpu: "250m"
+                memory: "256Mi"
