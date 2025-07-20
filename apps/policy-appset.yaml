@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: kyverno-policies
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - name: dev
+            clusterUrl: https://dev-cluster.example.com
+          - name: qa
+            clusterUrl: https://qa-cluster.example.com
+          - name: staging
+            clusterUrl: https://staging-cluster.example.com
+          - name: prod
+            clusterUrl: https://prod-cluster.example.com
+  template:
+    metadata:
+      name: kyverno-policies-{{name}}
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/Vikas-Prince/csi-pharma-app-gitops
+        targetRevision: main
+        path: policies
+      destination:
+        server: '{{clusterUrl}}'
+        namespace: kyverno
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
