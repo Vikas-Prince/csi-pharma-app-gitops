@@ -1,0 +1,17 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: block-latest-tag
+spec:
+  rules:
+  - name: block-latest-image
+    match:
+      resources:
+        kinds:
+        - Pod
+    validate:
+      message: "Image tag 'latest' is not allowed."
+      pattern:
+        spec:
+          containers:
+          - image: "!*:latest"
