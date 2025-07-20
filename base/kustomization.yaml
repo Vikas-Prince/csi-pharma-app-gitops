@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - rollout.yaml
+  - service-stable.yaml
+  - service-canary.yaml
+  - service-root.yaml
+  - ingress.yaml
+  - analysis-template.yaml
+  # - config/configmap.yaml
+  # - secrets/secret.yaml
+  - hpa.yaml
+  - pdb.yaml
+  - networkpolicy.yaml
+  - priorityclass.yaml
+  - resourcequota.yaml
+  - limits.yaml
+  - rbac.yaml

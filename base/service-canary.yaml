@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: java-app-canary
+spec:
+  selector:
+    app: java-app
+    version: canary
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
