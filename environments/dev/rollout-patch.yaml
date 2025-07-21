@@ -9,4 +9,4 @@ spec:
     spec:
       containers:
         - name: java-container
-          image: myrepo/java-app:dev
+          image: ghcr.io/Vikas-Prince/pharma-dev:afc2f9af3b4be451016c9a1041b31dc24bdb6106
