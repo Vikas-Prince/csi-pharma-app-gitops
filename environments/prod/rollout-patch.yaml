@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
         - name: java-container
-          image: myrepo/java-app:prod
+          image: acrglobalcsi.azurecr.io/pharma-prod:v1.0.0
   strategy:
     canary:
       steps:
