@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
         - name: java-container
-          image: myrepo/java-app:prod
+          image: vikasprince/csi-pharma-qa:3f9df11ff78c6d3a1dccb08b99a31b81e7ac129f
   strategy:
     canary:
       steps:
