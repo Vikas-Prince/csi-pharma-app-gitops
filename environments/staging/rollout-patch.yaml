@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
         - name: java-container
-          image: myrepo/java-app:staging
+          image: acrglobalcsi.azurecr.io/acrglobalcsi/csi-pharma-staging:
   strategy:
     canary:
       steps:
